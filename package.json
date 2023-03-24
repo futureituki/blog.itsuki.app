@@ -8,7 +8,6 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint:js": "eslint \"src/**/*.{js,astro}\" --fix --ignore-path .gitignore",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,astro}\"",
     "astro": "astro"
   },
@@ -18,7 +17,9 @@
     "@astrojs/rss": "^2.3.1",
     "@astrojs/sitemap": "^1.0.0",
     "astro": "^1.9.0",
-    "microcms-js-sdk": "^2.3.2"
+    "astro-icon": "^0.8.0",
+    "microcms-js-sdk": "^2.3.2",
+    "react-icons": "^4.8.0"
   },
   "devDependencies": {
     "prettier": "^2.8.4",

@@ -8,14 +8,20 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "lint:js": "eslint \"src/**/*.{js,astro}\" --fix --ignore-path .gitignore",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,astro}\"",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/compiler": "^1.2.1",
     "@astrojs/mdx": "^0.14.0",
-    "@astrojs/rss": "^2.0.0",
+    "@astrojs/rss": "^2.3.1",
     "@astrojs/sitemap": "^1.0.0",
     "astro": "^1.9.0",
     "microcms-js-sdk": "^2.3.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4",
+    "prettier-plugin-astro": "^0.8.0"
   }
 }

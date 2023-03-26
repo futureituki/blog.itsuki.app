@@ -3,3 +3,45 @@
   width:100%;
   margin:0 auto;
 }
+.post_box {
+  width:90%;
+  padding:40px 0;
+  margin:0px auto;
+  color:#ccc;
+}
+.post_box h3 {
+  font-size:1.6rem;
+  font-weight:bold;
+  color:#fff;
+}
+.post_subinfo {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin:20px 0;
+}
+.post_body {
+  margin:10px 0;
+  font-size:1.2rem;
+}
+.more {
+  font-size:.9rem;
+  text-decoration:underline;
+}
+.post_tags_f {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.post_tags_f ul {
+  display:flex;
+  margin:0;
+  list-style:none;
+  gap:10px;
+}
+.post_tag {
+  background:#ccc;
+  color:#000;
+  border-radius:10px;
+  padding:5px;
+}

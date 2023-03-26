@@ -2,6 +2,7 @@
   width:100%;
   height:90%;
   background:#69b076;
+  padding:20px 0;
 }
 .header_inner {
   width:95%;
@@ -24,5 +25,5 @@
 }
 .title {
   color:#fff;
-  font-size:1.6rem;
+  font-size:2.2rem;
 }

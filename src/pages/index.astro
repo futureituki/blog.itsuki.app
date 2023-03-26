@@ -1,10 +1,26 @@
 ---
 import '../styles/index.css'
 import GlobalLayout from '../layouts/GlobalLayout.astro'
+import Post from '../layouts/Post.astro'
+import { getBlogs } from '../library/microcms'
+
+const { contents: posts } = await getBlogs({ fields: ['id', 'title', 'publishedAt', 'content', 'category'] })
 ---
 
 <GlobalLayout>
-  <main>
-    <div></div>
+  <main class="main_c">
+    <div>
+      {
+        posts.map((post) => (
+          <Post
+            title={post.title}
+            url={`/blog/${post.id}`}
+            body={post.content}
+            tags={post.category}
+            date={`${post.publishedAt}`}
+          />
+        ))
+      }
+    </div>
   </main>
 </GlobalLayout>

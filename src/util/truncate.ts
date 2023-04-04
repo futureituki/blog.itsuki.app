@@ -1,5 +1,5 @@
 export const truncateText = (text: string) => {
-  const length = text.length
+  const length = String(text).length
   if (length <= 120) {
     return text
   } else {

@@ -1,6 +1,9 @@
 ---
 // import Layout from "../../layouts/Layout.astro";
+import '../../styles/index.css'
+import GlobalLayout from '../../layouts/GlobalLayout.astro'
 import { getBlogs, getBlogDetail } from '../../library/microcms'
+import DetailPost from '../../layouts/DetailPost.astro'
 
 export const getStaticPaths = async () => {
   const response = await getBlogs({ fields: ['id'] })
@@ -11,6 +14,11 @@ export const getStaticPaths = async () => {
   }))
 }
 const { blogId } = Astro.params
-console.log(blogId)
-const blog = getBlogDetail(blogId as string)
+const blog = await getBlogDetail(blogId as string)
 ---
+
+<GlobalLayout>
+  <main class="main_c">
+    <DetailPost title={blog.title} body={blog.content} tags={blog.category} date={`${blog.publishedAt}`} />
+  </main>
+</GlobalLayout>

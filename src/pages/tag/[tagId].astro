@@ -1,0 +1,41 @@
+---
+// import Layout from "../../layouts/Layout.astro";
+import '../../styles/layout.css'
+import '../../styles/tag.css'
+import GlobalLayout from '../../layouts/GlobalLayout.astro'
+import { getCategoryBlogs, getBlogs } from '../../library/microcms'
+import Post from '../../layouts/Post.astro'
+
+export const getStaticPaths = async () => {
+  const response = await getBlogs({ fields: ['category'] })
+  return response.contents.map((content: any) => ({
+    params: {
+      tagId: content.category[0].length > 1 ? content.category[0].map((tag: any) => tag.id) : content.category[0].id,
+    },
+  }))
+}
+const { tagId } = Astro.params
+const blogs = await getCategoryBlogs(tagId as string)
+console.log(blogs.tags)
+---
+
+<GlobalLayout>
+  <main class="main_c">
+    <div class="tag_names">
+      <div class="post_tags_f">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            d="M5.5 7A1.5 1.5 0 0 1 4 5.5A1.5 1.5 0 0 1 5.5 4A1.5 1.5 0 0 1 7 5.5A1.5 1.5 0 0 1 5.5 7m15.91 4.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.11 0-2 .89-2 2v7c0 .55.22 1.05.59 1.41l8.99 9c.37.36.87.59 1.42.59c.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41c0-.56-.23-1.06-.59-1.42Z"
+          ></path></svg
+        >
+        <h1>{blogs.name}</h1>
+      </div>
+    </div>
+    {
+      blogs.tags.map((blog: any) => (
+        <Post title={blog.title} body={blog.content} date={`${blog.publishedAt}`} url={`/blog/${blog.id}`} />
+      ))
+    }
+  </main>
+</GlobalLayout>
